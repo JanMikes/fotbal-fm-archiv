@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# Serve static assets directly from assets/ directory
+RewriteRule ^img/(.*)$ assets/img/$1 [L]
+RewriteRule ^foto/(.*)$ assets/foto/$1 [L]
+RewriteRule ^znaky/(.*)$ assets/znaky/$1 [L]
+RewriteRule ^ads/(.*)$ assets/ads/$1 [L]
+RewriteRule ^soubory/(.*)$ assets/soubory/$1 [L]
+RewriteRule ^inc/(.*)$ assets/inc/$1 [L]
+RewriteRule ^css/(.*)$ assets/css/$1 [L]
+
+# Don't rewrite existing files/directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route all .asp requests through index.php
+RewriteRule ^(.+\.asp)$ index.php [QSA,L]
+
+# Route bare root to index.php
+RewriteRule ^$ index.php [QSA,L]

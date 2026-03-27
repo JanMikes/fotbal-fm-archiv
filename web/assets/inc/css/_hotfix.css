@@ -1,0 +1,55 @@
+.topstories .topstories-nav .topstory-nav {
+	padding: 32px 28px;
+}
+
+.game-box .buttons {
+    margin-top: 10px;
+}
+
+.hp-games {
+    padding-bottom: 30px;
+}
+
+
+.topstories .topstories-nav .topstory-nav:first-child{
+width:46%;
+}
+.topstories .topstories-nav .topstory-nav:first-child .heading{
+text-align:center; 
+}
+.topstories .topstories-nav .topstory-nav{
+width:27%;
+}
+@media (max-width: 870px){
+.topstories .topstories-nav .topstory-nav,.topstories .topstories-nav .topstory-nav:first-child {
+  float:left;
+  width:100%;
+}
+.topstories .topstories-nav .topstory-nav .heading{
+  font-size:18px;
+}
+                
+                
+}    
+
+.topstories .topstories-nav .topstory-nav:first-child .heading {
+	font-size: 30px;
+}
+
+
+.submenu-wrapper {
+	color: red;
+	position: relative;
+} 
+.submenu-wrapper:hover .dropdown-menu {
+	display: block;
+}    
+        
+.submenu-wrapper .dropdown-menu {
+	display:none;
+	position: absolute;
+	top:0;
+	left: 100%;
+}           
+         
+.game-box .game-data .team-logo img{width:72px;height:auto;}   
