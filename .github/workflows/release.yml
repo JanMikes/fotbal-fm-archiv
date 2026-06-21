@@ -5,8 +5,10 @@
 # ghcr image and then triggers the deploy via the shared reusable workflow, which
 # HMAC-POSTs https://deploy.lily.srv.thedevs.cz/hooks/fotbal-fm-archiv.
 #
-# Requires GH secret DEPLOY_WEBHOOK_SECRET (per-app HMAC key; the orchestrator sets
-# it via `gh secret set`). `secrets: inherit` also passes GITHUB_TOKEN for ghcr push.
+# Requires GH secret DEPLOY_WEBHOOK_SECRET (per-app HMAC key; set via `gh secret set`).
+# It is passed EXPLICITLY (NOT `secrets: inherit`) because the shared workflow lives
+# under a DIFFERENT owner (TheDevs-cz) and inherit does not cross owners. GITHUB_TOKEN
+# is provided to the called workflow automatically.
 
 name: Release
 
@@ -23,7 +25,8 @@ permissions:
 jobs:
     ship:
         uses: TheDevs-cz/ci/.github/workflows/_ship.yml@v1
-        secrets: inherit
+        secrets:
+            DEPLOY_WEBHOOK_SECRET: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}
         with:
             app: fotbal-fm-archiv
             image: ghcr.io/janmikes/fotbal-fm-archiv
