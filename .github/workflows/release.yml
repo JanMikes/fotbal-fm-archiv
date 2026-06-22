@@ -32,3 +32,4 @@ jobs:
             app: fotbal-fm-archiv
             image: ghcr.io/janmikes/fotbal-fm-archiv
             deploy_host: lily.srv.thedevs.cz
+            deploy_tag: this-tag-does-not-exist-0000   # TEMP: deliberate failure test (expect RED)
