@@ -21,6 +21,7 @@ on:
 permissions:
     contents: read
     packages: write
+    statuses: read        # await_deploy (default true) reads the box's 'deploy' commit status
 
 jobs:
     ship:
