@@ -1,5 +1,10 @@
 FROM php:8.5-apache
 
+# The official image ships no php.ini (PHP defaults: display_errors=1, expose_php=1).
+# Use the bundled production ini: errors are logged (to docker logs), never displayed.
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+    && echo "expose_php = Off" > "$PHP_INI_DIR/conf.d/zz-production.ini"
+
 RUN a2enmod rewrite \
     && sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
 
